@@ -2,7 +2,7 @@
 // Created by asphox on 09/10/18.
 //
 
-#include "TIM561.h"
+#include "../include/TIM561.h"
 
 bool TIM561::connect(const std::string& ip, int port)
 {

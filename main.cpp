@@ -1,5 +1,5 @@
 #include <iostream>
-#include "TIM561.h"
+#include "lidar/include/TIM561.h"
 
 int main() {
     std::cout << "Connection..." << std::endl;

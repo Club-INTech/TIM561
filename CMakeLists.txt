@@ -3,4 +3,4 @@ project(TIM561)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(TIM561 main.cpp TIM561.cpp TIM561.h TelegramScan.h TelegramScan.cpp DataPoint.h)
+add_executable(TIM561 main.cpp lidar/src/TIM561.cpp lidar/include/TIM561.h basic_com/include/TelegramScan.h basic_com/src/TelegramScan.cpp lidar/include/DataPoint.h)

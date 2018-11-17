@@ -2,7 +2,7 @@
 // Created by asphox on 10/10/18.
 //
 
-#include "TelegramScan.h"
+#include "../include/TelegramScan.h"
 
 const std::string& TelegramScan::getCommandType() const
 {
