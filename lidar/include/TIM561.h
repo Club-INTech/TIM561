@@ -14,7 +14,7 @@
 #include <algorithm>
 #include <sstream>
 #include <array>
-#include "../../com/include/TelegramScan.h"
+#include "../../basic_com/include/TelegramScan.h"
 #include "DataPoint.h"
 
 /**
