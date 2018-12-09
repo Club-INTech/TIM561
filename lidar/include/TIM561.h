@@ -16,6 +16,7 @@
 #include <array>
 #include "../../basic_com/include/TelegramScan.h"
 #include "DataPoint.h"
+#include "Lidar.hpp"
 
 /**
  * \class TIM561
@@ -23,7 +24,7 @@
  * \author SOTON "Asphox" Dylan
  * \contact dylan.soton@telecom-sudparis.eu
  */
-class TIM561
+class TIM561 : public Lidar
 {
 public:
 
