@@ -16,6 +16,7 @@
 #include <array>
 #include "../../basic_com/include/TelegramScan.h"
 #include "DataPoint.h"
+#include "../../../Lidar.hpp"
 
 /**
  * \class TIM561
@@ -23,7 +24,7 @@
  * \author SOTON "Asphox" Dylan
  * \contact dylan.soton@telecom-sudparis.eu
  */
-class TIM561
+class TIM561 : public Lidar
 {
 public:
 
@@ -102,6 +103,12 @@ public:
     * \return const reference array containing all datapoints
     */
     const std::array<DataPoint,NBR_DATA>& getDataPoints() const;
+
+    /**
+    * \public
+    * \brief The number of steps between -45 degrees and 225 degrees
+    */
+    constexpr static const float STEP_ANGLE        = 0.3345719;
 
 
 
@@ -274,12 +281,6 @@ private:
    * \brief Order to log in a specific access mode
    */
     constexpr static const char* LOGIN             = "sMN SetAccessMode";
-
-    /**
-     * \private
-     * \brief The number of steps between -45 degrees and 225 degrees
-     */
-    constexpr static const float STEP_ANGLE        = 0.3345719;
 
     /**
     * \private
