@@ -14,16 +14,14 @@ int main() {
                 usleep(70000);
                 tim.update();
                 auto tmp = tim.getDataPoints();
-                for( int i = 0 ; i< TIM561::NBR_DATA ; i+=1 )
+                for( int i = 0 ; i< TIM561::NBR_DATA ; i+=5 )
                 {
-//                    if( tmp[i].distance < 500 )
-//                        printf("|");
-//                    else
-//                        printf(".");
-
-                    printf("[%g, %d] ", tmp[i].angle, tmp[i].distance);
+                    if( tmp[i].distance < 500 )
+                        printf("|");
+                    else
+                        printf(".");
                 }
-                printf("\n\n");
+                printf("\n");
             }
         }
     }

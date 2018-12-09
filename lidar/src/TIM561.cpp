@@ -60,7 +60,7 @@ void TIM561::updateDataPoints()
         /*stoul converts hex string to real hex int*/
         currentDataPoints[i].distance = std::stoul(currentScan.part[i+TelegramScan::ID::DATA_1],nullptr,16);
         currentDataPoints[i].angle = current_angle;
-        current_angle+=STEP_ANGLE;
+        current_angle+=0.33458;
     }
 }
 

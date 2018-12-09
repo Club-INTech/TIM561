@@ -277,12 +277,6 @@ private:
     constexpr static const char* LOGIN             = "sMN SetAccessMode";
 
     /**
-     * \private
-     * \brief The number of steps between -45 degrees and 225 degrees
-     */
-    constexpr static const float STEP_ANGLE        = 0.3345719;
-
-    /**
     * \private
     * \brief Array containing all the current DataPoints (angle+distance)
     */
