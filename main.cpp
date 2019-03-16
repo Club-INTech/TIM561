@@ -16,7 +16,7 @@ int main() {
                 auto tmp = tim.getDataPoints();
                 for( int i = 0 ; i< TIM561::NBR_DATA ; i+=1 )
                 {
-                    printf("[%g, %d] ", tmp[i].first, tmp[i].second);
+                    printf("[%g, %d] ", tmp->at(i).first, tmp->at(i).second);
                 }
                 printf("\n\n");
             }

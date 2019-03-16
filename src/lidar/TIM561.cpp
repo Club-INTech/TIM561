@@ -20,6 +20,11 @@ bool TIM561::connect(const std::string& ip, int port)
 
 bool TIM561::start()
 {
+    currentDataPoints.reserve(NBR_DATA);
+    for(int i = 0; i < NBR_DATA; i++){
+        currentDataPoints.emplace_back(std::pair<float, uint16_t>(0,0));
+    }
+
     if( loginAsService() && loginAsClient() )
     {
         if( write(RUN) )
@@ -90,17 +95,19 @@ bool TIM561::login( const char id[] , const char pwd[] , uint8_t acces_id )
 
 bool TIM561::loginAsClient()
 {
+    bool status;
     if( m_currentAccessMode > 3 )
     {
         if( loginAsService() )
         {
-            return  login(CLIENT_ID,CLIENT_PWD,3);
+            status = login(CLIENT_ID,CLIENT_PWD,3);
         }
     }
     else
     {
-        return login(CLIENT_ID,CLIENT_PWD,3);
+        status = login(CLIENT_ID,CLIENT_PWD,3);
     }
+    return status;
 }
 
 bool TIM561::loginAsService()
@@ -110,17 +117,19 @@ bool TIM561::loginAsService()
 
 bool TIM561::loginAsMaintenance()
 {
+    bool status;
     if( m_currentAccessMode > 2 )
     {
         if( loginAsClient() )
         {
-            return login(MAINTENANCE_ID,MAINTENANCE_PWD,2);
+            status = login(MAINTENANCE_ID,MAINTENANCE_PWD,2);
         }
     }
     else
     {
-        return login(MAINTENANCE_ID,MAINTENANCE_PWD,2);
+        status = login(MAINTENANCE_ID,MAINTENANCE_PWD,2);
     }
+    return status;
 }
 
 
@@ -132,7 +141,7 @@ bool TIM561::write(const std::string& msg)
     fmsg+=ETX;
 
     /*writes message on TCP socket*/
-    int nbrByte = ::write(m_socketId,fmsg.substr(0,fmsg.length()).c_str(),fmsg.size());
+    ssize_t nbrByte = ::write(m_socketId,fmsg.substr(0,fmsg.length()).c_str(),fmsg.size());
 
     /*checks if all bytes are sent*/
     return nbrByte == fmsg.size();
