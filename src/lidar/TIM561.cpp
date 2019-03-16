@@ -2,7 +2,7 @@
 // Created by asphox on 09/10/18.
 //
 
-#include "../include/TIM561.h"
+#include "lidar/TIM561.h"
 
 bool TIM561::connect(const std::string& ip, int port)
 {
@@ -58,15 +58,15 @@ void TIM561::updateDataPoints()
     for( int i = 0 ; i < NBR_DATA ; i++ )
     {
         /*stoul converts hex string to real hex int*/
-        currentDataPoints[i].distance = std::stoul(currentScan.part[i+TelegramScan::ID::DATA_1],nullptr,16);
-        currentDataPoints[i].angle = current_angle;
+        currentDataPoints[i].second = std::stoul(currentScan.part[i+TelegramScan::ID::DATA_1],nullptr,16);
+        currentDataPoints[i].first = current_angle;
         current_angle+=STEP_ANGLE;
     }
 }
 
-const std::array<DataPoint,TIM561::NBR_DATA>& TIM561::getDataPoints() const
+const std::vector<std::pair<float, uint16_t>> * TIM561::getDataPoints() const
 {
-    return currentDataPoints;
+    return &currentDataPoints;
 }
 
 bool TIM561::login( const char id[] , const char pwd[] , uint8_t acces_id )

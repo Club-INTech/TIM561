@@ -14,9 +14,8 @@
 #include <algorithm>
 #include <sstream>
 #include <array>
-#include "../../basic_com/include/TelegramScan.h"
-#include "DataPoint.h"
-#include "../../../Lidar.hpp"
+
+#include "basic_com/TelegramScan.h"
 
 /**
  * \class TIM561
@@ -24,7 +23,7 @@
  * \author SOTON "Asphox" Dylan
  * \contact dylan.soton@telecom-sudparis.eu
  */
-class TIM561 : public Lidar
+class TIM561
 {
 public:
 
@@ -102,7 +101,7 @@ public:
     * \param None
     * \return const reference array containing all datapoints
     */
-    const std::array<DataPoint,NBR_DATA>& getDataPoints() const;
+    const std::vector<std::pair<float, uint16_t>> * getDataPoints() const;
 
     /**
     * \public
@@ -286,7 +285,7 @@ private:
     * \private
     * \brief Array containing all the current DataPoints (angle+distance)
     */
-    std::array<DataPoint,NBR_DATA> currentDataPoints;
+    std::vector<std::pair<float, uint16_t>> currentDataPoints;
 };
 
 

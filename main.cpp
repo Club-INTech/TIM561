@@ -1,5 +1,5 @@
 #include <iostream>
-#include "lidar/include/TIM561.h"
+#include "lidar/TIM561.h"
 
 int main() {
     std::cout << "Connection..." << std::endl;
@@ -16,12 +16,7 @@ int main() {
                 auto tmp = tim.getDataPoints();
                 for( int i = 0 ; i< TIM561::NBR_DATA ; i+=1 )
                 {
-//                    if( tmp[i].distance < 500 )
-//                        printf("|");
-//                    else
-//                        printf(".");
-
-                    printf("[%g, %d] ", tmp[i].angle, tmp[i].distance);
+                    printf("[%g, %d] ", tmp[i].first, tmp[i].second);
                 }
                 printf("\n\n");
             }
